@@ -1,0 +1,27 @@
+{
+    "name": "Jenkins notify",
+    "version": "1.6",
+    "description": "",
+    "permissions": [ "tabs", "notifications", "storage"],
+    "manifest_version": 2,
+    "content_scripts": [],
+    "background": {
+        "scripts": [ "background.js" ],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "popup/images/jenkins.png",
+            "32": "popup/images/jenkins.png",
+            "48": "popup/images/jenkins.png",
+            "128": "popup/images/jenkins.png"
+        }
+    },
+    "icons": {
+        "16": "popup/images/jenkins.png",
+        "32": "popup/images/jenkins.png",
+        "48": "popup/images/jenkins.png",
+        "128": "popup/images/jenkins.png"
+    }
+}
