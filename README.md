@@ -4,7 +4,7 @@
 
 ## Pre conditions:
 - Have username and api token in jenkins
-  - Api token get at Configure on account info page
+  - Api token get at Configure tab on account info page
 
 ## Deploy to jenkins
   - Change params in script deploy.js:
