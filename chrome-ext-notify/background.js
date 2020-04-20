@@ -13,6 +13,11 @@ const sendRequest = (url, method = 'GET', cb) => {
   xhr.onload = function () {
     if (xhr.status === 200) {
       if (cb) cb(xhr.responseText)
+    } else {
+      showNotify({
+        title: 'Failed',
+        message: 'Cant get status from monitor server'
+      })
     }
   }
 }
@@ -37,6 +42,8 @@ const showNotify = (opt) => {
 }
 
 function run () {
+  console.log('call server to check')
+
   sendRequest('http://localhost:5678/notifies/', 'GET', (respText) => {
     const notifies = JSON.parse(respText)
     notifies.forEach(notify => {
@@ -46,6 +53,12 @@ function run () {
   })
 }
 
-setInterval(() => {
-  run()
-}, 1000)
+let intervalID
+chrome.storage.onChanged.addListener((changes) => {
+  if (!intervalID) {
+    intervalID = setInterval(() => {
+      run()
+    }, 1000)
+  }
+})
+
