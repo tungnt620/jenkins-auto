@@ -13,12 +13,13 @@ const sendRequest = (url, method = 'GET', cb) => {
   xhr.onload = function () {
     if (xhr.status === 200) {
       if (cb) cb(xhr.responseText)
-    } else {
-      showNotify({
-        title: 'Failed',
-        message: 'Cant get status from monitor server'
-      })
     }
+  }
+  xhr.onerror = function (err) {
+    showNotify({
+      title: 'Failed',
+      message: 'Cant get status from monitor server'
+    })
   }
 }
 
