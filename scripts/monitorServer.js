@@ -62,7 +62,7 @@ function getLastBuildStatus (jobLink) {
     const newJobData = respData
     oldJobsData[jobLink] = newJobData
 
-    if (lastJobData && newJobData.id !== lastJobData.id && newJobData.result !== lastJobData.result) {
+    if (lastJobData && (newJobData.id !== lastJobData.id || newJobData.result !== lastJobData.result)) {
       if (newJobData.result) {
         const notify = getJobResultNotify(newJobData)
         console.log(notify.message + ' ' + notify.title)
